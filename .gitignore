@@ -1,0 +1,142 @@
+# ======================================
+# Python Data Science Project .gitignore
+# Stack: Poetry, Podman, Just, Marimo, VSCode
+# ======================================
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+*.pdb
+
+# Byte-compiled / optimized / DLL files
+*.so
+*.dll
+*.dylib
+
+# --- Poetry ---
+# Virtual environments (if not managed externally)
+.poetry/
+.venv/
+venv/
+env/
+ENV/
+*.lock
+
+# --- Marimo ---
+# Marimo temp/runtime files
+.marimo/
+*.marimo-cache/
+*.marimo-tmp/
+
+# --- Notebooks ---
+.ipynb_checkpoints/
+*.ipynb_convert/
+*.nbconvert/
+*.nbconvert.ipynb
+
+# --- Data files ---
+# Ignore large or generated data
+data/
+datasets/
+*.csv
+*.tsv
+*.parquet
+*.feather
+*.hdf5
+*.h5
+*.db
+*.sqlite
+*.sqlite3
+*.log
+*.bak
+
+# Keep schema/migrations if needed
+!migrations/
+!schema.sql
+
+# --- Podman / Containers ---
+# Podman or Docker generated files
+*.podman/
+*.podman-compose/
+*.podman.log
+podman-compose.override.yml
+# Ignore local volumes
+volumes/
+tmp/
+logs/
+*.pid
+
+# --- VSCode ---
+.vscode/
+.history/
+*.code-workspace
+
+# --- OS / IDE files ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Testing / Reports ---
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+.tox/
+.nox/
+*.log
+*.tmp
+*.out
+
+# --- Build / Distribution ---
+build/
+dist/
+*.egg-info/
+.eggs/
+*.manifest
+*.spec
+
+# --- Cache ---
+.cache/
+__pypackages__/
+*.pytest_cache
+*.ipynb_checkpoints
+
+# --- Just ---
+# Justfile temp outputs (if any)
+.justfile.temp
+.justfile.log
+
+# --- Database dumps ---
+*.sql
+*.dump
+*.backup
+
+# --- Environment variables & configs ---
+.env
+.env.*
+*.ini
+*.toml
+*.yaml
+*.yml
+!pyproject.toml  # Keep Poetry's pyproject.toml tracked
+
+# --- Temporary files ---
+tmp/
+temp/
+*.tmp
+*.swp
+*.swo
+*~
+
+# --- Project-specific exclusions ---
+secrets/
+private/
+credentials.json
+config.json
+
+# ======================================
+# End of .gitignore
+# ======================================
