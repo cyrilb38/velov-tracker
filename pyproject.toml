@@ -1,0 +1,29 @@
+[project]
+name = "velov-tracker"
+version = "0.1.0"
+description = "Model to predict velov availability"
+authors = [
+    {name = "Cyril"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas (>=2.3.3,<3.0.0)",
+    "polars (>=1.34.0,<2.0.0)",
+    "python-dotenv (>=1.1.1,<2.0.0)",
+    "requests (>=2.32.5,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "ruff (>=0.14.1,<0.15.0)",
+    "black (>=25.9.0,<26.0.0)"
+]
+
+[tool.poetry]
+package-mode = false

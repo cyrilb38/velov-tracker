@@ -1,96 +1,137 @@
-# ======================================
+# ═══════════════════════════════════════════════════════
 # Python Data Science Project .gitignore
 # Stack: Poetry, Podman, Just, Marimo, VSCode
-# ======================================
+# ═══════════════════════════════════════════════════════
 
-# --- Python ---
+# ═══════════════════════════════════════════════════════
+# Python
+# ═══════════════════════════════════════════════════════
 __pycache__/
 *.py[cod]
 *$py.class
 *.pyo
 *.pyd
-*.pdb
-
-# Byte-compiled / optimized / DLL files
 *.so
 *.dll
 *.dylib
 
-# --- Poetry ---
-# Virtual environments (if not managed externally)
-.poetry/
+# ═══════════════════════════════════════════════════════
+# Virtual Environments
+# ═══════════════════════════════════════════════════════
 .venv/
 venv/
 env/
 ENV/
-*.lock
+.poetry/
 
-# --- Marimo ---
-# Marimo temp/runtime files
+# Note: poetry.lock MUST be tracked for reproducibility
+
+# ═══════════════════════════════════════════════════════
+# Marimo
+# ═══════════════════════════════════════════════════════
 .marimo/
 *.marimo-cache/
 *.marimo-tmp/
 
-# --- Notebooks ---
+# ═══════════════════════════════════════════════════════
+# Notebooks
+# ═══════════════════════════════════════════════════════
 .ipynb_checkpoints/
 *.ipynb_convert/
-*.nbconvert/
-*.nbconvert.ipynb
 
-# --- Data files ---
-# Ignore large or generated data
-data/
-datasets/
+# ═══════════════════════════════════════════════════════
+# Data (medallion architecture)
+# ═══════════════════════════════════════════════════════
+# Bronze/Silver/Gold layers
+data/bronze/velov_raw/*
+data/silver/*
+data/gold/*
+
+# Keep structure
+!data/bronze/.gitkeep
+!data/silver/.gitkeep
+!data/gold/.gitkeep
+
+# Data formats
 *.csv
 *.tsv
 *.parquet
 *.feather
 *.hdf5
 *.h5
+*.pkl
+*.pickle
+
+# ═══════════════════════════════════════════════════════
+# Database
+# ═══════════════════════════════════════════════════════
 *.db
 *.sqlite
 *.sqlite3
-*.log
-*.bak
+*.db-shm
+*.db-wal
 
-# Keep schema/migrations if needed
-!migrations/
-!schema.sql
+# Database dumps (keep schema/migrations)
+*.dump
+backup_*.sql
 
-# --- Podman / Containers ---
-# Podman or Docker generated files
+# ═══════════════════════════════════════════════════════
+# Podman / Containers
+# ═══════════════════════════════════════════════════════
+volumes/
 *.podman/
 *.podman-compose/
 *.podman.log
 podman-compose.override.yml
-# Ignore local volumes
-volumes/
-tmp/
+
+# Note: docker-compose.yml MUST be tracked
+
+# ═══════════════════════════════════════════════════════
+# MLflow
+# ═══════════════════════════════════════════════════════
+mlruns/
+mlflow.db
+mlflow.db-shm
+mlflow.db-wal
+mlflow-artifacts/
+
+# ═══════════════════════════════════════════════════════
+# Logs & Temporary
+# ═══════════════════════════════════════════════════════
 logs/
+tmp/
+temp/
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
 *.pid
+*.out
 
-# --- VSCode ---
-.vscode/
-.history/
-*.code-workspace
-
-# --- OS / IDE files ---
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# --- Testing / Reports ---
+# ═══════════════════════════════════════════════════════
+# Testing & Coverage
+# ═══════════════════════════════════════════════════════
 .pytest_cache/
 .coverage
+.coverage.*
 coverage.xml
 htmlcov/
 .tox/
 .nox/
-*.log
-*.tmp
-*.out
 
-# --- Build / Distribution ---
+# ═══════════════════════════════════════════════════════
+# Linting & Type Checking
+# ═══════════════════════════════════════════════════════
+.ruff_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# ═══════════════════════════════════════════════════════
+# Build & Distribution
+# ═══════════════════════════════════════════════════════
 build/
 dist/
 *.egg-info/
@@ -98,45 +139,51 @@ dist/
 *.manifest
 *.spec
 
-# --- Cache ---
-.cache/
-__pypackages__/
-*.pytest_cache
-*.ipynb_checkpoints
+# ═══════════════════════════════════════════════════════
+# IDEs
+# ═══════════════════════════════════════════════════════
+# VSCode
+.vscode/
+.history/
+*.code-workspace
 
-# --- Just ---
-# Justfile temp outputs (if any)
-.justfile.temp
-.justfile.log
+# PyCharm
+.idea/
 
-# --- Database dumps ---
-*.sql
-*.dump
-*.backup
+# ═══════════════════════════════════════════════════════
+# OS
+# ═══════════════════════════════════════════════════════
+.DS_Store
+Thumbs.db
+desktop.ini
 
-# --- Environment variables & configs ---
+# ═══════════════════════════════════════════════════════
+# Environment & Secrets
+# ═══════════════════════════════════════════════════════
 .env
-.env.*
-*.ini
-*.toml
-*.yaml
-*.yml
-!pyproject.toml  # Keep Poetry's pyproject.toml tracked
-
-# --- Temporary files ---
-tmp/
-temp/
-*.tmp
-*.swp
-*.swo
-*~
-
-# --- Project-specific exclusions ---
+.env.local
+.env.*.local
 secrets/
 private/
 credentials.json
-config.json
+secrets.yaml
+secrets.toml
 
-# ======================================
-# End of .gitignore
-# ======================================
+# Note: .env.example MUST be tracked
+
+# ═══════════════════════════════════════════════════════
+# Monitoring (Prometheus, Grafana)
+# ═══════════════════════════════════════════════════════
+prometheus_data/
+grafana_data/
+
+# ═══════════════════════════════════════════════════════
+# Cache
+# ═══════════════════════════════════════════════════════
+.cache/
+__pypackages__/
+
+# ═══════════════════════════════════════════════════════
+# Project-specific
+# ═══════════════════════════════════════════════════════
+# Add specific files/folders to ignore here
